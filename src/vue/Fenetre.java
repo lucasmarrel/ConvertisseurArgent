@@ -75,34 +75,39 @@ public class Fenetre extends JFrame {
 		btnConvertir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				montant = Float.valueOf(txtMontant.getText());
+				try
+				{
+					montant = Float.parseFloat(txtMontant.getText());
 				
-				if (cbDevise1.getSelectedIndex()==cbDevise2.getSelectedIndex()){
-					lbResultat.setText(String.valueOf(montant));
-				}
-				else if (cbDevise1.getSelectedIndex()==0 && cbDevise2.getSelectedIndex()==1){
-					montant = conversion.convertisseurEurACad(montant);
-					lbResultat.setText(String.valueOf(montant));
-				}
-				else if (cbDevise1.getSelectedIndex()==0 && cbDevise2.getSelectedIndex()==2){
-					montant = conversion.convertisseurEurAUsd(montant);
-					lbResultat.setText(String.valueOf(montant));
-				}
-				else if (cbDevise1.getSelectedIndex()==1 && cbDevise2.getSelectedIndex()==0){
-					montant = conversion.convertisseurCadAEur(montant);
-					lbResultat.setText(String.valueOf(montant));
-				}
-				else if (cbDevise1.getSelectedIndex()==1 && cbDevise2.getSelectedIndex()==2){
-					montant = conversion.convertisseurCadAUsd(montant);
-					lbResultat.setText(String.valueOf(montant));
-				}
-				else if (cbDevise1.getSelectedIndex()==2 && cbDevise2.getSelectedIndex()==0){
-					montant = conversion.convertisseurUsdAEur(montant);
-					lbResultat.setText(String.valueOf(montant));
-				}
-				else if (cbDevise1.getSelectedIndex()==2 && cbDevise2.getSelectedIndex()==1){
-					montant = conversion.convertisseurUsdACad(montant);
-					lbResultat.setText(String.valueOf(montant));
+					if (cbDevise1.getSelectedIndex()==cbDevise2.getSelectedIndex()){
+						lbResultat.setText(String.valueOf(montant));
+					}
+					else if (cbDevise1.getSelectedIndex()==0 && cbDevise2.getSelectedIndex()==1){
+						montant = conversion.convertisseurEurACad(montant);
+						lbResultat.setText(String.valueOf(montant));
+					}
+					else if (cbDevise1.getSelectedIndex()==0 && cbDevise2.getSelectedIndex()==2){
+						montant = conversion.convertisseurEurAUsd(montant);
+						lbResultat.setText(String.valueOf(montant));
+					}
+					else if (cbDevise1.getSelectedIndex()==1 && cbDevise2.getSelectedIndex()==0){
+						montant = conversion.convertisseurCadAEur(montant);
+						lbResultat.setText(String.valueOf(montant));
+					}
+					else if (cbDevise1.getSelectedIndex()==1 && cbDevise2.getSelectedIndex()==2){
+						montant = conversion.convertisseurCadAUsd(montant);
+						lbResultat.setText(String.valueOf(montant));
+					}
+					else if (cbDevise1.getSelectedIndex()==2 && cbDevise2.getSelectedIndex()==0){
+						montant = conversion.convertisseurUsdAEur(montant);
+						lbResultat.setText(String.valueOf(montant));
+					}
+					else if (cbDevise1.getSelectedIndex()==2 && cbDevise2.getSelectedIndex()==1){
+						montant = conversion.convertisseurUsdACad(montant);
+						lbResultat.setText(String.valueOf(montant));
+					}
+				} catch (Exception ex){
+					lbResultat.setText("Le montant entré est incorrect");
 				}
 			}
 		});
