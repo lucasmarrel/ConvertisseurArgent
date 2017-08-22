@@ -1,11 +1,11 @@
 package métier;
 
-public class Convertion {
+public class Conversion {
 	
 	private float montant;
 	
 	
-	public Convertion(){
+	public Conversion(){
 		
 	}
 	
@@ -34,7 +34,7 @@ public class Convertion {
 		return (float) (montant*0.79);
 	}
 	
-	public float convertisseurUsqACad(float montant){
+	public float convertisseurUsdACad(float montant){
 		this.montant=montant;
 		return (float) (montant/0.79);
 	}
