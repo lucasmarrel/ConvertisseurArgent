@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 public class Fenetre extends JFrame {
@@ -38,6 +40,8 @@ public class Fenetre extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		String[] listeDevises = {"EUR","CAD","USD"};
+		
 		conversion = new Conversion();
 		
 		JPanel panel = new JPanel();
@@ -47,37 +51,36 @@ public class Fenetre extends JFrame {
 		panel.add(txtMontant);
 		txtMontant.setColumns(10);
 		
-		JComboBox cbDevise1 = new JComboBox();
+		JComboBox cbDevise1 = new JComboBox(listeDevises);
 		panel.add(cbDevise1);
-		cbDevise1.addItem("EUR");
-		cbDevise1.addItem("CAD");
-		cbDevise1.addItem("USD");
 		
 		JLabel lblEn = new JLabel("   en   ");
 		panel.add(lblEn);
 		
-		JComboBox cbDevise2 = new JComboBox();
+		JComboBox cbDevise2 = new JComboBox(listeDevises);
 		panel.add(cbDevise2);
-		cbDevise2.addItem("EUR");
-		cbDevise2.addItem("CAD");
-		cbDevise2.addItem("USD");
 		cbDevise2.setSelectedIndex(1);
 		
 		JButton btnConvertir = new JButton("Convertir");
 		panel.add(btnConvertir);
 		
 		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.SOUTH);
+		contentPane.add(panel_1, BorderLayout.CENTER);
 		
 		JLabel lbResultat = new JLabel("");
 		panel_1.add(lbResultat);
+		lbResultat.setForeground(Color.BLUE);
+		
+		Random r = new Random();
+		
 		
 		btnConvertir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				System.out.println(15+r.nextFloat()*5);
 				try
 				{
 					montant = Float.parseFloat(txtMontant.getText());
+					
 				
 					if (cbDevise1.getSelectedIndex()==cbDevise2.getSelectedIndex()){
 						lbResultat.setText(String.valueOf(montant)+" "+cbDevise2.getSelectedItem());
