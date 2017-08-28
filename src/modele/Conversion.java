@@ -1,4 +1,4 @@
-package métier;
+package modele;
 
 public class Conversion {
 	

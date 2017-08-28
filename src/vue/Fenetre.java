@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import métier.Conversion;
+import modele.Conversion;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -75,7 +75,9 @@ public class Fenetre extends JFrame {
 		
 		
 		btnConvertir.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				
 				System.out.println(15+r.nextFloat()*5);
 				try
 				{
