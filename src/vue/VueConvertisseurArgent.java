@@ -93,7 +93,7 @@ public class VueConvertisseurArgent extends JFrame {
 				montant.setDevise(cbDevise1.getSelectedIndex());
 				montant.setDeviseConversion(cbDevise2.getSelectedIndex());
 				conversion.conversionDevise(montant);
-				lbResultat.setText(String.valueOf(montant.getMontantConverti()));
+				lbResultat.setText(String.valueOf(montant.getMontantConverti()) +  " " + cbDevise2.getSelectedItem());
 				
 				}
 				catch (Exception ex) {
