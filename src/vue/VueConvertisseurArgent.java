@@ -8,8 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controleur.Conversion;
 import main.Main;
-import modele.Conversion;
+import modele.MontantArgent;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -23,10 +24,11 @@ public class VueConvertisseurArgent extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtMontant;
-	private float montant;
 	private JComboBox cbDevise1;
 	private JComboBox cbDevise2;
 	private JLabel lbResultat;
+	private MontantArgent montant;
+	private Conversion conversion;
 
 	/**
 	 * Launch the application.
@@ -35,13 +37,15 @@ public class VueConvertisseurArgent extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VueConvertisseurArgent() {
+	public VueConvertisseurArgent(Conversion conversion) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 846, 224);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		this.conversion=conversion;
 		
 		String[] listeDevises = {"EUR","CAD","USD"};
 		
@@ -79,32 +83,26 @@ public class VueConvertisseurArgent extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				
+				try {
+					
+				
+				montant = new MontantArgent();
+				
 				//System.out.println(15+r.nextFloat()*5);
-				Main.getConversion().conversionDevise();
+				montant.setMontant(Float.parseFloat(txtMontant.getText()));
+				montant.setDevise(cbDevise1.getSelectedIndex());
+				montant.setDeviseConversion(cbDevise2.getSelectedIndex());
+				conversion.conversionDevise(montant);
+				lbResultat.setText(String.valueOf(montant.getMontantConverti()));
+				
+				}
+				catch (Exception ex) {
+					lbResultat.setText("Le montant entré est incorrect");
+				}
 				
 			}
 		});
 		
-	}
-	
-	public int getDevise1() {
-		return cbDevise1.getSelectedIndex();
-	}
-	
-	public int getDevise2() {
-		return cbDevise2.getSelectedIndex();
-	}
-	
-	public float getMontant() {
-		return Float.parseFloat(txtMontant.getText());
-	}
-	
-	public void setLabelText(String montantConverti) {
-		lbResultat.setText(montantConverti+" "+cbDevise2.getSelectedItem());
-	}
-	
-	public void setLabelErreur(String erreur) {
-		lbResultat.setText(erreur);
 	}
 
 }

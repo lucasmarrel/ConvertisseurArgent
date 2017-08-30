@@ -1,6 +1,6 @@
 package main;
 
-import modele.Conversion;
+import controleur.Conversion;
 import vue.VueConvertisseurArgent;
 
 public class Main {
@@ -10,14 +10,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		//System.out.println("Hey");
-		fen = new VueConvertisseurArgent();
-		conversion = new Conversion(fen);
+		conversion = new Conversion();
+		fen = new VueConvertisseurArgent(conversion);
 		fen.setVisible(true);
 
-	}
-	
-	public static Conversion getConversion() {
-		return conversion;
 	}
 
 }
